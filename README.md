@@ -6,4 +6,4 @@ This repository contains my frontend development tasks for the A2SV learning pro
 
 A basic HTML/CSS/JavaScript to-do list where users can add and remove tasks.
 
-### Folder structure:
+
