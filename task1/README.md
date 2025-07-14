@@ -24,8 +24,8 @@ After typing a task and pressing Add, the task appears in a card with a checkbox
 
 # Task Checked
 /screenshots/checked.png
-When a task is clicked, it's marked complete — icon changes and background turns green.
+When a task is clicked, it's marked complete — icon changes and background dims with the text being crossed out.
 
 # Dropdown Menu
 /screenshots/dropdown.png
-Press the three-dot button to open the dropdown for Edit and Delete options.
+Press the three-dot button (more button) to open the dropdown for Edit and Delete options.
