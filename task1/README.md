@@ -14,18 +14,18 @@
 
 
 
-# home page 
-/screenshots/homepage.png
+# home page
+![Home Page](screenshots/homepage.png)  
 The home screen shows the empty to-do list with the input field and "Add" button.
 
 # Task Added
-/screenshots/tasks.png
+![Task Added](screenshots/tasks.png)  
 After typing a task and pressing Add, the task appears in a card with a checkbox and menu button.
 
 # Task Checked
-/screenshots/checked.png
+![Task Checked](screenshots/checked.png)  
 When a task is clicked, it's marked complete — icon changes and background turns green.
 
 # Dropdown Menu
-/screenshots/dropdown.png
+![Dropdown Menu](screenshots/dropdown.png) 
 Press the three-dot button to open the dropdown for Edit and Delete options.
