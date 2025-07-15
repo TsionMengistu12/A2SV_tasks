@@ -29,3 +29,5 @@ When a task is clicked, it's marked complete — icon changes and background tur
 # Dropdown Menu
 ![Dropdown Menu](screenshots/dropdown.png) 
 Press the three-dot button to open the dropdown for Edit and Delete options.
+/screenshots/dropdown.png
+Press the three-dot button (more button) to open the dropdown for Edit and Delete options.
