@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Simple To-do list </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class= "container">
+            <div class="todo">
+                <h1> TO-DO LIST </h1>
+
+                <div>
+                    <ul class="task-con">
+                        <!-- tasks will be added dynamically -->
+                        
+                    </ul>
+                </div>
+
+                <div class="add">
+                    <input type="text" id="task" placeholder="Add your task here">
+
+                    <div id="msg" class="popup"></div>
+
+                    <button onclick="addTask()">Add</button>
+                </div>
+                
+            </div>
+             
+        </div>
+        <!-- the container ends here -->
+         <script src="dist/todo_2.js"></script>
+    </body>
+    
+</html>
