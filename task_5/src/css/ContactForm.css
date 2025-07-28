@@ -4,8 +4,8 @@
   margin: 2rem auto;
   padding: 1.5rem;
   border-radius: 8px;
-  background-color: #fdfdfd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #eeecec;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
@@ -23,8 +23,7 @@ label {
   font-weight: 600;
 }
 
-input,
-textarea {
+input,textarea {
   width: 100%;
   padding: 0.6rem;
   border: 1px solid #ccc;
@@ -32,8 +31,7 @@ textarea {
   font-size: 1rem;
 }
 
-input:focus,
-textarea:focus {
+input:focus,textarea:focus {
   border-color: #268e30;
   outline: none;
 }
@@ -58,7 +56,7 @@ button:hover {
   color: red;
   font-size: 0.85rem;
   margin-top: 0.2rem;
-  
+
 }
 
 .success-msg {

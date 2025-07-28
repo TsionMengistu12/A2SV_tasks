@@ -66,3 +66,8 @@ When a task is clicked, it's marked complete — icon changes and the text will 
 
 The form accepts name email and additional message to be submitted
 utilized the useForm hook in react to achieve its functionality
+It validates the email format and doesn't allow for an in-complete form to be submitted
+
+# contact form look
+
+![contact_form](task_5/screenshots/contact_form.png)
