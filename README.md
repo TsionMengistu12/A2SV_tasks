@@ -71,3 +71,17 @@ It validates the email format and doesn't allow for an in-complete form to be su
 # contact form look
 
 ![contact_form](task_5/screenshots/contact_form.png)
+
+### Task 6 - job listing app
+
+The app displays available job opportunities in one page
+The detailed description of the jobs can be found in another page
+An individual job opening can be displayed in a card format
+
+# opportunities page
+
+![opportunitie](job-dashboard/screen-shots/opportunitie.png)
+
+# Description page
+
+![description](job-dashboard/screen-shots/description.png)
