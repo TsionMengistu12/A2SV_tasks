@@ -54,6 +54,7 @@ export default function VerifyEmail() {
       setError("Please enter the 4-digit code.");
       return;
     }
+    
     try {
       interface VerifyEmailResponse {
         success?: boolean;
@@ -61,6 +62,8 @@ export default function VerifyEmail() {
         message?: string;
       }
 
+      console.log("Sending verification request:", { email, OTP: enteredCode });
+      
       const res = await axios.post<VerifyEmailResponse>(
         "https://akil-backend.onrender.com/verify-email",
         {
@@ -68,19 +71,33 @@ export default function VerifyEmail() {
           OTP: enteredCode,
         }
       );
-      console.log("back end response :", res);
-      console.log("Verification response:", res);
+      
+      console.log("Backend response status:", res.status);
+      console.log("Backend response data:", res.data);
+      
       if (res.status === 200 && (res.data?.success || res.data?.verified)) {
         router.push("/");
+      } else if (res?.status === 500) {
+        setError("Server error - please try again later");
       } else {
         setError(res.data?.message || "Verification failed");
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || "Verification failed");
+      console.error("Verification error:", err);
+      console.error("Error response:", err.response);
+      
+      if (err.response?.status === 500) {
+        setError("Server error (500) - Backend is experiencing issues. Please try again later or contact support.");
+      } else if (err.response?.status === 404) {
+        setError("API endpoint not found. Please check if the backend is properly configured.");
+      } else if (err.response?.status === 400) {
+        setError(err.response?.data?.message || "Invalid request data");
+      } else if (!err.response) {
+        setError("Network error - Unable to reach the backend server. Please check your internet connection.");
+      } else {
+        setError(err.response?.data?.message || "Verification failed");
+      }
     }
-
-    // TODO: Call backend to verify code
-    // alert(`Code submitted: ${enteredCode}`);
   };
 
   // Step 6: Render the UI
@@ -135,7 +152,6 @@ export default function VerifyEmail() {
         </div>
         <button
           type="submit"
-          onClick={handleSubmit}
           className="bg-indigo-600 hover:bg-indigo-900 text-white h-11 w-full rounded-full disabled:bg-indigo-300"
           disabled={code.some((digit) => digit === "")}
         >

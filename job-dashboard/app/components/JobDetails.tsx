@@ -39,7 +39,7 @@ export default function JobDetails({ job, onBack }: JobDetailsProps) {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 bg-gray-900 min-h-screen text-gray-900">
+    <div className="max-w-6xl mx-auto px-4 py-8 bg-indigo-200 min-h-screen text-gray-900">
       {/* Back Button */}
       <button
         onClick={onBack}

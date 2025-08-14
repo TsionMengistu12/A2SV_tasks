@@ -85,3 +85,28 @@ An individual job opening can be displayed in a card format
 # Description page
 
 ![description](job-dashboard/screen-shots/description.png)
+
+### Task 8 - job listing app authentication
+
+Added authentication using next auth that allows users to sign up and sign in
+when a user signs up it sends verification code via email and allows for a user to insert a 4 digit OTP for verificaion
+
+# sign-up page
+
+![sign_up](job-dashboard/screen-shots/sign_up.png)
+
+# sign-in page
+
+![sign_in](job-dashboard/screen-shots/sign_in.png)
+
+# verification page
+
+![verification](job-dashboard/screen-shots/verification.png)
+
+# opportunities page
+
+![opportunities](job-dashboard/screen-shots/opportunites.png)
+
+# Description page
+
+![descriptions](job-dashboard/screen-shots/descriptions.png)

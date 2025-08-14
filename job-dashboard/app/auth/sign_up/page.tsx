@@ -25,7 +25,7 @@ export default function Signup() {
     try {
       const res = await api.post("/signup", form);
       console.log("Signup success:", res.data);
-      router.push("/auth/sign_up/verification");
+      router.push(`/auth/sign_up/verification?email=${encodeURIComponent(form.email)}`);
     } catch (err: any) {
       setError(err.response?.data?.message || "signup failed");
     }
