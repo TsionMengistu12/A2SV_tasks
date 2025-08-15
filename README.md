@@ -110,3 +110,13 @@ when a user signs up it sends verification code via email and allows for a user 
 # Description page
 
 ![descriptions](job-dashboard/screen-shots/descriptions.png)
+
+### Final Task
+
+Added functionality of bookmarking a job
+performed test using jest to check if bookmarking functionality works
+performed E2E testing to check if bookmarking functionality works
+
+# Book-marking functionality
+
+![bookmarsks](job-dashboard/screen-shots/bookmarks.png)
