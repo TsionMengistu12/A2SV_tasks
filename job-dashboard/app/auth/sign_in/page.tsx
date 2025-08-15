@@ -23,19 +23,28 @@ export default function Signin() {
     if (res?.error) {
       setError(res.error);
     } else {
-      router.push("/dashboard");
+      router.push("/");
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <form onSubmit={handleSubmit} className="bg-white w-full max-w-md p-8 rounded-lg shadow">
-        <h1 className="text-3xl font-extrabold text-center text-slate-800 mb-6">Welcome Back,</h1>
-        {error && <p className="text-red-500 text-sm mb-2 text-center">{error}</p>}
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white w-full max-w-md p-8 rounded-lg shadow"
+      >
+        <h1 className="text-3xl font-extrabold text-center text-slate-800 mb-6">
+          Welcome Back,
+        </h1>
+        {error && (
+          <p className="text-red-500 text-sm mb-2 text-center">{error}</p>
+        )}
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Email Address
+            </label>
             <input
               name="email"
               placeholder="Enter email address"
@@ -46,7 +55,9 @@ export default function Signin() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Password
+            </label>
             <input
               name="password"
               placeholder="Enter password"
@@ -57,11 +68,17 @@ export default function Signin() {
           </div>
         </div>
 
-        <button type="submit" className="bg-indigo-700 hover:bg-indigo-800 text-white h-11 w-full rounded-full mt-6">
+        <button
+          type="submit"
+          className="bg-indigo-500 hover:bg-indigo-800 text-white h-11 w-full rounded-full mt-6"
+        >
           Login
         </button>
         <p className="text-sm text-center mt-4">
-          Don’t have an account? <a href="/auth/sign_up" className="text-indigo-700 font-semibold">Sign Up</a>
+          Don’t have an account?{" "}
+          <a href="/auth/sign_up" className="text-indigo-700 font-semibold">
+            Sign Up
+          </a>
         </p>
       </form>
     </div>

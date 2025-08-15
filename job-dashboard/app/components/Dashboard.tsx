@@ -2,12 +2,14 @@
 import React, { useState } from "react";
 import JobCard from "@/app/components/JobCard";
 import JobDetails from "@/app/components/JobDetails";
+import { useAuth } from "@/lib/hooks/useAuth";
 
 type JobPosting = {
   id: string;
   title: string;
   company: string;
   description: string;
+  isBookmarked?: boolean;
   responsibilities?: string[];
   ideal_candidate?: {
     age: string;
@@ -29,6 +31,8 @@ type JobPosting = {
 
 export default function Dashboard({ jobs }: { jobs: JobPosting[] }) {
   const [selectedJob, setSelectedJob] = useState<JobPosting | null>(null);
+  const { user, logout } = useAuth();
+
   const handleJobSelect = (job: JobPosting) => setSelectedJob(job);
   const handleBackToDashboard = () => setSelectedJob(null);
 
@@ -46,14 +50,31 @@ export default function Dashboard({ jobs }: { jobs: JobPosting[] }) {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
-            <h1 className="text-3xl font-bold text-gray-900">Opportunities</h1>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600">Sort by:</span>
-              <select className="border border-gray-300 rounded-lg px-3 py-1 text-sm">
-                <option value="most-relevant">Most relevant</option>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-              </select>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Opportunities
+              </h1>
+              {user && (
+                <p className="text-sm text-gray-600 mt-1">
+                  Welcome back, {user.name || user.email}!
+                </p>
+              )}
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600">Sort by:</span>
+                <select className="border border-gray-300 rounded-lg px-3 py-1 text-sm">
+                  <option value="most-relevant">Most relevant</option>
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                </select>
+              </div>
+              <button
+                onClick={logout}
+                className="px-3 py-1 text-sm text-indigo-400 hover:text-indigo-600 border border-indigo-300 hover:border-indigo-500 rounded-lg transition-colors"
+              >
+                Logout
+              </button>
             </div>
           </div>
           <p className="text-gray-600">Showing {jobs.length} results</p>
@@ -65,8 +86,9 @@ export default function Dashboard({ jobs }: { jobs: JobPosting[] }) {
             jobs.map((job) => (
               <JobCard
                 key={job.id}
-                job={job}
+                job={job as any}
                 onClick={() => handleJobSelect(job)}
+                intiallyBookmarked={Boolean(job.isBookmarked)}
               />
             ))
           ) : (

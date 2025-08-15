@@ -1,7 +1,9 @@
 "use client";
 
-import { FC } from "react";
-import { MapPin } from "lucide-react";
+import { FC, useState, MouseEvent } from "react";
+import { Bookmark, BookmarkCheck, MapPin } from "lucide-react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 interface Job {
   id: string;
@@ -23,14 +25,66 @@ interface Job {
 interface JobProps {
   job: Job;
   onClick: () => void;
+  // optional prop
+  intiallyBookmarked?: boolean;
 }
 
-const JobCard: FC<JobProps> = ({ job, onClick }) => {
+const JobCard: FC<JobProps> = ({
+  job,
+  onClick,
+  intiallyBookmarked = false,
+}) => {
+  const [bookmarked, setBookmarked] = useState(intiallyBookmarked);
+  const { data: session } = useSession();
+  const accessToken = (session as any)?.accessToken as string | undefined;
+
+  const handleBookmarkToggle = async (e: MouseEvent) => {
+    e.stopPropagation();
+
+    if (!accessToken) {
+      console.error("bookmark toggle failed: user not authenticated");
+      return;
+    }
+
+    try {
+      const url = `/api/bookmarks/${job.id}`;
+
+      if (bookmarked) {
+        await axios.delete(url, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+      } else {
+        await axios.post(
+          url,
+          {},
+          {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          }
+        );
+      }
+      setBookmarked(!bookmarked);
+    } catch (error) {
+      console.error("bookmark toggle failed: ", error);
+    }
+  };
   return (
     <div
-      className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col gap-4 cursor-pointer"
+      className="relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col gap-4 cursor-pointer"
       onClick={onClick}
     >
+      {/* bookmark button */}
+      <button
+        className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
+        onClick={handleBookmarkToggle}
+        aria-label="toggle-bookmark"
+      >
+        {bookmarked ? (
+          <BookmarkCheck className="w-5 h-5 text-green-600" />
+        ) : (
+          <Bookmark className="w-5 h-5 text-gray-400" />
+        )}
+      </button>
+
       {/* Header: Logo + Title */}
       <div className="flex items-center gap-4">
         <img
